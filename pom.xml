@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>github.io.volong</groupId>
-	<artifactId>node-in-action</artifactId>
+	<artifactId>netty-in-action</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>node-in-action</name>
+	<name>netty-in-action</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
