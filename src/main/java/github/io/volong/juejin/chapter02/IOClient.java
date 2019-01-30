@@ -1,4 +1,4 @@
-package github.io.volong.juejin;
+package github.io.volong.juejin.chapter02;
 
 import java.io.IOException;
 import java.net.Socket;
