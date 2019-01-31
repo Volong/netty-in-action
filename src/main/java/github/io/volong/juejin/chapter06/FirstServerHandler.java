@@ -10,14 +10,6 @@ import io.netty.util.CharsetUtil;
 public class FirstServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        byte[] bytes = "服务端发来消息：连接成功".getBytes(CharsetUtil.UTF_8);
-        ByteBuf buffer = ctx.alloc().buffer();
-        buffer.writeBytes(bytes);
-        ctx.writeAndFlush(buffer);
-    }
-    
-    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf byteBuf = (ByteBuf) msg;
         
