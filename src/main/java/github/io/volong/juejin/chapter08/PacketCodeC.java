@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import github.io.volong.juejin.chapter09.LoginResponsePacket;
+import github.io.volong.juejin.chapter10.MessageRequestPacket;
+import github.io.volong.juejin.chapter10.MessageResponsePacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 
@@ -18,6 +20,8 @@ public class PacketCodeC {
         packetTypeMap = new HashMap<>();
         packetTypeMap.put(Command.LOGIN_REQUEST, LoginRequestPacket.class);
         packetTypeMap.put(Command.LOGIN_RESPONSE, LoginResponsePacket.class);
+        packetTypeMap.put(Command.MESSAGE_REQUEST, MessageRequestPacket.class);
+        packetTypeMap.put(Command.MESSAGE_RESPONSE, MessageResponsePacket.class);
         
         serializerMap = new HashMap<>();
         Serializer serializer = new JSONSerializer();

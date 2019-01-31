@@ -6,6 +6,7 @@ import java.util.UUID;
 import github.io.volong.juejin.chapter08.LoginRequestPacket;
 import github.io.volong.juejin.chapter08.Packet;
 import github.io.volong.juejin.chapter08.PacketCodeC;
+import github.io.volong.juejin.chapter10.MessageResponsePacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -43,6 +44,10 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
             } else {
                 System.out.println("客户端登录失败，原因：" + loginResponsePacket.getReason());
             }
+        } else if (packet instanceof MessageResponsePacket) {
+            MessageResponsePacket messageResponsePacket = (MessageResponsePacket) packet;
+            System.out.println(new Date() + ": 收到服务端消息: " + messageResponsePacket.getMessage());
         }
+        
     }
 }

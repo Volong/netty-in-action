@@ -1,8 +1,12 @@
 package github.io.volong.juejin.chapter09;
 
+import java.util.Date;
+
 import github.io.volong.juejin.chapter08.LoginRequestPacket;
 import github.io.volong.juejin.chapter08.Packet;
 import github.io.volong.juejin.chapter08.PacketCodeC;
+import github.io.volong.juejin.chapter10.MessageRequestPacket;
+import github.io.volong.juejin.chapter10.MessageResponsePacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -34,6 +38,14 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             ByteBuf responseByteBuf = PacketCodeC.INSTANCE.encode(ctx.alloc(), loginResponsePacket);
             ctx.channel().writeAndFlush(responseByteBuf);
             
+        } else if (packet instanceof MessageRequestPacket) {
+            MessageRequestPacket messageRequestPacket = ((MessageRequestPacket) packet);
+            System.out.println(new Date() + ": 收到客户端消息: " + messageRequestPacket.getMessage());
+            
+            MessageResponsePacket messageResponsePacket = new MessageResponsePacket();
+            messageResponsePacket.setMessage("收到!!!");
+            ByteBuf byteBuf = PacketCodeC.INSTANCE.encode(ctx.alloc(), messageResponsePacket);
+            ctx.writeAndFlush(byteBuf);
         }
         
     }
