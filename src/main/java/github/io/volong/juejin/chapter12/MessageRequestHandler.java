@@ -15,7 +15,7 @@ public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRe
         System.out.println(new Date() + " : 收到客户端消息: " + msg.getMessage());
         
         messageResponsePacket.setMessage("收到！！！");
-        ctx.channel().writeAndFlush(msg);
+        ctx.channel().writeAndFlush(messageResponsePacket);
     }
 
 }
