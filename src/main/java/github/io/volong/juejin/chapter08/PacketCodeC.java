@@ -87,4 +87,19 @@ public class PacketCodeC {
 
         return packetTypeMap.get(command);
     }
+
+    public void encode(ByteBuf byteBuf, Packet packet) {
+        
+        // 2. 序列化
+        byte[] bytes = Serializer.DEFAULT.serialize(packet);
+        
+        // 3. 编码
+        byteBuf.writeInt(MAGIC_NUMBER);
+        byteBuf.writeByte(packet.getVersion());
+        byteBuf.writeByte(Serializer.DEFAULT.getSerializerAlgorithm());
+        byteBuf.writeByte(packet.getCommand());
+        byteBuf.writeInt(bytes.length);
+        byteBuf.writeBytes(bytes);
+        
+    }
 }
