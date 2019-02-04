@@ -12,4 +12,5 @@ public class LoginUtil {
     public static boolean hasLogin(Channel channel) {
         return channel.attr(Attributes.LOGIN) != null;
     }
+
 }
