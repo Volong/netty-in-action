@@ -3,6 +3,7 @@ package github.io.volong.juejin.chapter15;
 import github.io.volong.juejin.chapter12.MessageRequestHandler;
 import github.io.volong.juejin.chapter12.PacketDecoder;
 import github.io.volong.juejin.chapter12.PacketEncoder;
+import github.io.volong.juejin.chapter13.Spliter;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -21,6 +22,7 @@ public class NettyServer {
                        .childHandler(new ChannelInitializer<NioSocketChannel>() {
                            @Override
                            protected void initChannel(NioSocketChannel ch) throws Exception {
+                               ch.pipeline().addLast(new Spliter());
                                ch.pipeline().addLast(new PacketDecoder());
                                ch.pipeline().addLast(new LoginRequestHandler());
                                ch.pipeline().addLast(new AuthHandler());
@@ -28,7 +30,7 @@ public class NettyServer {
                                ch.pipeline().addLast(new PacketEncoder());
 
                            }
-                       });
+                       }).bind(8000);
 
 
 

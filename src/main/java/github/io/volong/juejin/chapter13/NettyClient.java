@@ -5,6 +5,7 @@ import github.io.volong.juejin.chapter12.LoginResponseHandler;
 import github.io.volong.juejin.chapter12.MessageResponseHandler;
 import github.io.volong.juejin.chapter12.PacketDecoder;
 import github.io.volong.juejin.chapter12.PacketEncoder;
+import github.io.volong.juejin.chapter14.LifeCyCleTestHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
@@ -33,6 +34,7 @@ public class NettyClient {
                     protected void initChannel(SocketChannel ch) throws Exception {
 //                        ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
 //                        ch.pipeline().addLast(new FirstClientHandler());
+                        ch.pipeline().addLast(new LifeCyCleTestHandler());
                         ch.pipeline().addLast(new Spliter());
                         ch.pipeline().addLast(new PacketDecoder());
                         ch.pipeline().addLast(new LoginResponseHandler());
@@ -45,7 +47,7 @@ public class NettyClient {
                     public void operationComplete(Future<? super Void> future) throws Exception {
                         if (future.isSuccess()) {
                             new Thread(() -> {
-                                for (int i = 0; i < 1000; i++) {
+                                for (int i = 0; i < 1; i++) {
                                     MessageRequestPacket packet = new MessageRequestPacket();
                                     packet.setMessage("volong is learning netty in action");
                                     Channel channel = ((ChannelFuture) future).channel();
