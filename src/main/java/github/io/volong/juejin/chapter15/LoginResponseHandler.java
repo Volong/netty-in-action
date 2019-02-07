@@ -19,7 +19,7 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
         loginRequestPacket.setPassword("Volong");
 
         System.out.println("客户端连接被激活");
-        ctx.channel().writeAndFlush(loginRequestPacket);
+//        ctx.channel().writeAndFlush(loginRequestPacket);
     }
 
     @Override
