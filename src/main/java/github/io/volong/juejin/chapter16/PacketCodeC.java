@@ -1,8 +1,6 @@
-package github.io.volong.juejin.chapter08;
+package github.io.volong.juejin.chapter16;
 
-import github.io.volong.juejin.chapter09.LoginResponsePacket;
-import github.io.volong.juejin.chapter10.MessageRequestPacket;
-import github.io.volong.juejin.chapter10.MessageResponsePacket;
+import github.io.volong.juejin.chapter08.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 

@@ -10,6 +10,6 @@ public class MessageResponseHandler extends SimpleChannelInboundHandler<MessageR
         String fromUserId = msg.getFromUserId();
         String fromUserName = msg.getFromUserName();
 
-        System.out.println(fromUserId + ":" + fromUserName + " -> " + msg.getMessage());
+        System.out.println(fromUserId + "-" + fromUserName + " : " + msg.getMessage());
     }
 }

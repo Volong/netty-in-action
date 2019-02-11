@@ -1,11 +1,11 @@
 package github.io.volong.juejin.chapter12;
 
-import java.util.Date;
-
 import github.io.volong.juejin.chapter08.LoginRequestPacket;
 import github.io.volong.juejin.chapter09.LoginResponsePacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+
+import java.util.Date;
 
 public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginRequestPacket>{
 

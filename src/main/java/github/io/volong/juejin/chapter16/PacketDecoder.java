@@ -1,6 +1,5 @@
-package github.io.volong.juejin.chapter12;
+package github.io.volong.juejin.chapter16;
 
-import github.io.volong.juejin.chapter08.PacketCodeC;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

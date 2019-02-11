@@ -1,11 +1,11 @@
 package github.io.volong.juejin.chapter12;
 
-import java.util.Date;
-
 import github.io.volong.juejin.chapter10.MessageRequestPacket;
 import github.io.volong.juejin.chapter10.MessageResponsePacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+
+import java.util.Date;
 
 public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRequestPacket>{
 

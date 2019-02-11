@@ -2,9 +2,7 @@ package github.io.volong.juejin.chapter10;
 
 import github.io.volong.juejin.chapter08.Command;
 import github.io.volong.juejin.chapter08.Packet;
-import lombok.Data;
 
-@Data
 public class MessageRequestPacket extends Packet {
 
     private String message;
@@ -14,4 +12,12 @@ public class MessageRequestPacket extends Packet {
         return Command.MESSAGE_REQUEST;
     }
 
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

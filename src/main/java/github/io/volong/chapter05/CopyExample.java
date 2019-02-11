@@ -1,10 +1,10 @@
 package github.io.volong.chapter05;
 
-import java.nio.charset.Charset;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.util.CharsetUtil;
+
+import java.nio.charset.Charset;
 
 public class CopyExample {
 

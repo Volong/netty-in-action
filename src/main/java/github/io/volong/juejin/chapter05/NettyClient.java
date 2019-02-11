@@ -1,15 +1,14 @@
 package github.io.volong.juejin.chapter05;
 
 
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 import io.netty.bootstrap.Bootstrap;
-import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class NettyClient {
 

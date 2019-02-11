@@ -1,8 +1,5 @@
 package github.io.volong.juejin.chapter09;
 
-import java.util.Date;
-import java.util.UUID;
-
 import github.io.volong.juejin.chapter08.LoginRequestPacket;
 import github.io.volong.juejin.chapter08.Packet;
 import github.io.volong.juejin.chapter08.PacketCodeC;
@@ -10,6 +7,9 @@ import github.io.volong.juejin.chapter10.MessageResponsePacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+
+import java.util.Date;
+import java.util.UUID;
 
 public class ClientHandler extends ChannelInboundHandlerAdapter {
 

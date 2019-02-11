@@ -1,7 +1,5 @@
 package github.io.volong.juejin.chapter12;
 
-import java.util.Scanner;
-
 import github.io.volong.juejin.chapter08.PacketCodeC;
 import github.io.volong.juejin.chapter09.LoginUtil;
 import github.io.volong.juejin.chapter10.MessageRequestPacket;
@@ -13,6 +11,8 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+
+import java.util.Scanner;
 
 public class NettyClient {
 
