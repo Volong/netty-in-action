@@ -1,5 +1,15 @@
 package github.io.volong.juejin.chapter17;
 
+import github.io.volong.juejin.chapter17.command.ConsoleCommandManager;
+import github.io.volong.juejin.chapter17.group.join.JoinGroupResponseHandler;
+import github.io.volong.juejin.chapter17.group.create.CreateGroupResponseHandler;
+import github.io.volong.juejin.chapter17.group.list.ListGroupMembersResponseHandler;
+import github.io.volong.juejin.chapter17.group.quit.QuitGroupResponseHandler;
+import github.io.volong.juejin.chapter17.login.LoginConsoleCommand;
+import github.io.volong.juejin.chapter17.login.LoginResponseHandler;
+import github.io.volong.juejin.chapter17.message.MessageResponseHandler;
+import github.io.volong.juejin.chapter17.packet.PacketDecoder;
+import github.io.volong.juejin.chapter17.packet.PacketEncoder;
 import github.io.volong.juejin.util.SessionUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -33,6 +43,10 @@ public class NettyClient {
                          ch.pipeline().addLast(new LoginResponseHandler());
                          ch.pipeline().addLast(new MessageResponseHandler());
                          ch.pipeline().addLast(new CreateGroupResponseHandler());
+                         ch.pipeline().addLast(new JoinGroupResponseHandler());
+                         ch.pipeline().addLast(new QuitGroupResponseHandler());
+                         ch.pipeline().addLast(new ListGroupMembersResponseHandler());
+
                          ch.pipeline().addLast(new PacketEncoder());
 
                      }

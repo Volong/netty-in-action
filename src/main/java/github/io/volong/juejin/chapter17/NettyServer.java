@@ -1,5 +1,13 @@
 package github.io.volong.juejin.chapter17;
 
+import github.io.volong.juejin.chapter17.group.join.JoinGroupRequestHandler;
+import github.io.volong.juejin.chapter17.group.create.CreateGroupRequestHandler;
+import github.io.volong.juejin.chapter17.group.list.ListGroupMembersRequestHandler;
+import github.io.volong.juejin.chapter17.group.quit.QuitGroupRequestHandler;
+import github.io.volong.juejin.chapter17.login.LoginRequestHandler;
+import github.io.volong.juejin.chapter17.message.MessageRequestHandler;
+import github.io.volong.juejin.chapter17.packet.PacketDecoder;
+import github.io.volong.juejin.chapter17.packet.PacketEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -28,6 +36,11 @@ public class NettyServer {
                 ch.pipeline().addLast(new AuthHandler());
                 ch.pipeline().addLast(new MessageRequestHandler());
                 ch.pipeline().addLast(new CreateGroupRequestHandler());
+                ch.pipeline().addLast(new JoinGroupRequestHandler());
+                ch.pipeline().addLast(new QuitGroupRequestHandler());
+                ch.pipeline().addLast(new ListGroupMembersRequestHandler());
+
+
                 ch.pipeline().addLast(new PacketEncoder());
             }
         });
