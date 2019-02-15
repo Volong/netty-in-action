@@ -23,6 +23,8 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
             String randomUserId = randomUserId();
             loginResponsePacket.setUserId(randomUserId);
             System.out.println(loginRequestPacket.getUsername() + " 登录成功");
+
+            // 记录当前登录的用户
             SessionUtil.bindSession(new Session(randomUserId, loginRequestPacket.getUsername()), ctx.channel());
         } else {
             loginResponsePacket.setReason("账号密码错误");
