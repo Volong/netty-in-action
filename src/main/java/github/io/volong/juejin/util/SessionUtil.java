@@ -1,6 +1,6 @@
 package github.io.volong.juejin.util;
 
-import github.io.volong.juejin.chapter17.Attributes;
+import github.io.volong.juejin.chapter19.Attributes;
 import github.io.volong.juejin.session.Session;
 import io.netty.channel.Channel;
 import io.netty.channel.group.ChannelGroup;
