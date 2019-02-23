@@ -1,4 +1,4 @@
-package github.io.volong.gitchat.chapter04;
+package github.io.volong.gitchat.chapter05;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
