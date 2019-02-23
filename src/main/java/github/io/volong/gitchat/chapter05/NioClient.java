@@ -1,6 +1,8 @@
 package github.io.volong.gitchat.chapter04;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -8,13 +10,15 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.FixedLengthFrameDecoder;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 
 public class NioClient {
 
     static final String HOST = System.getProperty("host", "127.0.0.1");
     static final int PORT = Integer.parseInt(System.getProperty("port", "8007"));
+
+    static final ByteBuf delimiter = Unpooled.copiedBuffer("|".getBytes());
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -34,8 +38,7 @@ public class NioClient {
 
                      ChannelPipeline p = ch.pipeline();
 
-                     // 因为 hello client ,im server 的长度为 23
-                     p.addLast(new FixedLengthFrameDecoder(23));
+                     p.addLast(new DelimiterBasedFrameDecoder(1000, delimiter));
                      p.addLast(new StringDecoder());
                      p.addLast(new NettyClientHandler());
                  }

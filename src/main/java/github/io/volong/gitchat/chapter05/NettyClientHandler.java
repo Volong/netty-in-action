@@ -7,26 +7,40 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class NettyServerHandler extends ChannelInboundHandlerAdapter {
+public class NettyClientHandler extends ChannelInboundHandlerAdapter {
+
+    private final byte[] request;
 
     private AtomicInteger atomicInteger = new AtomicInteger(0);
 
+    public NettyClientHandler() {
+        request = "hello server,im a clinet|".getBytes();
+    }
+
     /**
      *
-     * 当服务端监听到客户端连接，并且完成三次握手后回调
+     * 当客户端与服务端连接建立完毕后被回调
      *
      * @param ctx
      * @throws Exception
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("--- accepted client ---");
-        ctx.fireChannelActive();
+
+        System.out.println("--- client already connected ---");
+
+        ByteBuf message = null;
+
+        for (int i = 0; i < 10; i++) {
+            message = Unpooled.buffer(request.length);
+            message.writeBytes(request);
+            ctx.writeAndFlush(message);
+        }
     }
 
     /**
      *
-     * 当服务端收到客户端发来的数据时被回调
+     * 客户端接受 buffer 里面的数据就绪后被回调
      *
      * @param ctx
      * @param msg
@@ -35,17 +49,8 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 
-        System.out.println(atomicInteger.getAndIncrement() + " receive client info: " +  msg);
+        System.out.println(atomicInteger.getAndIncrement() + " receive from server:" + msg);
 
-        String sendContent = "hello client, im server";
-
-        ByteBuf seneMsg = Unpooled.buffer(sendContent.length());
-
-        seneMsg.writeBytes(sendContent.getBytes());
-
-        ctx.writeAndFlush(seneMsg);
-
-        System.out.println("send info to client: " + sendContent);
     }
 
     @Override

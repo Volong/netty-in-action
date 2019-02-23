@@ -8,6 +8,7 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.FixedLengthFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.logging.LogLevel;
@@ -35,8 +36,7 @@ public class NettyServer {
                  protected void initChannel(SocketChannel ch) throws Exception {
                      ChannelPipeline p = ch.pipeline();
 
-                     // 因为 hello server,im a client 的长度为 24
-                     p.addLast(new FixedLengthFrameDecoder(24));
+                     p.addLast(new DelimiterBasedFrameDecoder(1000, NioClient.delimiter));
                      p.addLast(new StringDecoder());
                      p.addLast(new NettyServerHandler());
                  }
