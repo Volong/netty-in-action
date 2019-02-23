@@ -31,7 +31,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
         ByteBuf message = null;
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 10; i++) {
             message = Unpooled.buffer(request.length);
             message.writeBytes(request);
             ctx.writeAndFlush(message);
@@ -49,12 +49,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 
-        ByteBuf message = (ByteBuf) msg;
-
-        byte[] response = new byte[message.readableBytes()];
-        message.readBytes(response);
-
-        System.out.println(atomicInteger.getAndIncrement() + " receive from server:" + new String(response));
+        System.out.println(atomicInteger.getAndIncrement() + " receive from server:" + msg);
 
     }
 

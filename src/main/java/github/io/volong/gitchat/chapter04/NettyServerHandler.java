@@ -34,12 +34,8 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ByteBuf message = (ByteBuf) msg;
 
-        byte[] response = new byte[message.readableBytes()];
-        message.readBytes(response);
-
-        System.out.println(atomicInteger.getAndIncrement() + " receive client info: " +  new String(response));
+        System.out.println(atomicInteger.getAndIncrement() + " receive client info: " +  msg);
 
         String sendContent = "hello client, im server";
 
