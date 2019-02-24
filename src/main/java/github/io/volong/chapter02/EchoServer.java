@@ -38,7 +38,7 @@ public class EchoServer {
                            
                            /*
                             * 当一个新的连接被接受时，一个新的子Channel将会被创建，
-                            * 而ChannelInitializer将会把一个你的EchoServerHandler的实例添加到该Channel的ChannelPipeline中。
+                            * 而 ChannelInitializer 将会把一个你的EchoServerHandler的实例添加到该Channel的ChannelPipeline中。
                             * 这个ChannelHandler将会收到有关入站消息的通知。
                             */
                            protected void initChannel(Channel ch) throws Exception {
