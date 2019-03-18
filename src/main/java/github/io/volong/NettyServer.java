@@ -32,7 +32,7 @@ public class NettyServer {
                        });
 
 
-        bind(serverBootstrap, 1000);
+        bind(serverBootstrap, 8000);
     }
 
     /**
