@@ -25,7 +25,7 @@ public class NettyClient {
 
                      @Override
                      protected void initChannel(SocketChannel ch) throws Exception {
-
+                        ch.pipeline().addLast(new FirstClientHandler());
                      }
                  });
 
